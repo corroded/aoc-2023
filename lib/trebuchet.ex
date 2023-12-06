@@ -5,7 +5,6 @@ defmodule Trebuchet do
         rep = String.replace(line, ~r/[[:alpha:][:blank:]]+/, "")
         "#{String.first(rep)}#{String.last(rep)}"
       end)
-      |> IO.inspect
       |> Enum.map(fn num ->
         {x, ""} = Integer.parse(num)
         x
