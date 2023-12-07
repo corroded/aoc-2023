@@ -3,6 +3,19 @@ defmodule Cubes do
   @green_max 13
   @blue_max 14
 
+  def calculate(games) do
+    String.split(games, "\n", trim: true)
+    |> Enum.map(fn game ->
+      [game_name, game_string] = String.split(game, ":")
+      if valid_game?(game_string) do
+        [_, index] = String.trim(game_name) |> String.split(" ")
+        String.to_integer(index)
+      end
+    end)
+    |> Enum.reject(&is_nil/1)
+    |> Enum.sum
+  end
+
   def valid_game?(games) do
     String.split(games, ";")
     |> Enum.all?(fn game ->
