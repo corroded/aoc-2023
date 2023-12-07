@@ -37,4 +37,23 @@ defmodule CubesTest do
       assert Cubes.parse_colors(game) == {:ok, %{"blue" => 23, "red" => 1, "green" => 2}}
     end
   end
+
+  describe "get_least_common_cubes/1" do
+    test "it gives least amount of cubes per game" do
+      game = "3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
+      assert Cubes.get_least_common_cubes(game) == %{"red" => 4, "green" => 2, "blue" => 6}
+
+      game2 = "1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue"
+      assert Cubes.get_least_common_cubes(game2) == %{"red" => 1, "green" => 3, "blue" => 4}
+
+      game3 = "8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red"
+      assert Cubes.get_least_common_cubes(game3) == %{"red" => 20, "green" => 13, "blue" => 6}
+
+      game4 = "1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red"
+      assert Cubes.get_least_common_cubes(game4) == %{"red" => 14, "green" => 3, "blue" => 15}
+
+      game5 = "6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
+      assert Cubes.get_least_common_cubes(game5) == %{"red" => 6, "green" => 3, "blue" => 2}
+    end
+  end
 end

@@ -17,6 +17,20 @@ defmodule Cubes do
     |> Enum.sum()
   end
 
+  def get_least_common_cubes(games) do
+    game = String.split(games, ";")
+      |> Enum.map(fn game ->
+        {:ok, colors} = parse_colors(game)
+        colors
+      end)
+
+    %{
+      "blue" => Enum.map(game, fn x -> x["blue"] end) |> Enum.reject(&is_nil/1) |> Enum.max,
+      "red" => Enum.map(game, fn x -> x["red"] end) |> Enum.reject(&is_nil/1) |> Enum.max,
+      "green" => Enum.map(game, fn x -> x["green"] end) |> Enum.reject(&is_nil/1) |> Enum.max
+    }
+  end
+
   def valid_game?(games) do
     String.split(games, ";")
     |> Enum.all?(fn game ->
