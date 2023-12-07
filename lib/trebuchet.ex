@@ -12,8 +12,8 @@ defmodule Trebuchet do
   }
   def calibrate(value) do
     number_words = Map.keys(@word_to_num_mapping) |> Enum.map(&(to_string(&1)))
-    IO.inspect(number_words, label: "NW")
     String.replace(value, number_words, fn mat -> words_to_num(mat) end)
+    |> IO.inspect(label: "before split")
     |> String.split("\n", trim: true)
     |> IO.inspect(label: "after split")
     |> Enum.map(fn line ->
@@ -29,9 +29,8 @@ defmodule Trebuchet do
     |> Enum.sum
   end
 
-  def words_to_num(value) do
+  defp words_to_num(value) do
     {:ok, num} = Map.fetch(@word_to_num_mapping, value |> String.to_atom())
-    IO.inspect("value #{value} replaced to #{num}")
     Integer.to_string(num)
   end
 end
