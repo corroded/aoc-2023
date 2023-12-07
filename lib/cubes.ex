@@ -31,6 +31,10 @@ defmodule Cubes do
     }
   end
 
+  def get_cube_power(least_common_cubes) do
+    Map.values(least_common_cubes) |> Enum.product
+  end
+
   def valid_game?(games) do
     String.split(games, ";")
     |> Enum.all?(fn game ->

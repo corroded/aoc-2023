@@ -56,4 +56,14 @@ defmodule CubesTest do
       assert Cubes.get_least_common_cubes(game5) == %{"red" => 6, "green" => 3, "blue" => 2}
     end
   end
+
+  describe "get_cube_power/1" do
+    test "it multiplies the colors" do
+      assert Cubes.get_cube_power(%{"red" => 4, "green" => 2, "blue" => 6}) == 48
+      assert Cubes.get_cube_power(%{"red" => 1, "green" => 3, "blue" => 4}) == 12
+      assert Cubes.get_cube_power(%{"red" => 20, "green" => 13, "blue" => 6}) == 1560
+      assert Cubes.get_cube_power(%{"red" => 14, "green" => 3, "blue" => 15}) == 630
+      assert Cubes.get_cube_power(%{"red" => 6, "green" => 3, "blue" => 2}) == 36
+    end
+  end
 end
