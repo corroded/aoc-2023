@@ -11,7 +11,8 @@ defmodule CubesTest do
         Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
       """
 
-      assert Cubes.calculate(games) == 8 # 1 + 2 + 5 are the only valid games
+      # 1 + 2 + 5 are the only valid games
+      assert Cubes.calculate(games) == 8
     end
   end
 
@@ -29,11 +30,11 @@ defmodule CubesTest do
     end
   end
 
-   describe "parse_colors/1" do
-     test "it makes a map with the colors and values" do
-       game = "23 blue, 2 green, 1 red"
+  describe "parse_colors/1" do
+    test "it makes a map with the colors and values" do
+      game = "23 blue, 2 green, 1 red"
 
-       assert Cubes.parse_colors(game) == %{"blue" => 23, "red" => 1, "green" => 2}
-     end
-   end
+      assert Cubes.parse_colors(game) == {:ok, %{"blue" => 23, "red" => 1, "green" => 2}}
+    end
+  end
 end

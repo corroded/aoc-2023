@@ -8,6 +8,7 @@ defmodule TrebuchetTest do
       a1b2c3d4e5f
       treb7uchet
     """
+
     assert Trebuchet.calibrate(values) == 142
   end
 
@@ -23,6 +24,7 @@ defmodule TrebuchetTest do
       ineone2
       2911threeninesdvxvheightwobm
     """
+
     assert Trebuchet.calibrate(values) == 315
   end
 
@@ -1030,6 +1032,6 @@ defmodule TrebuchetTest do
       dhfbhone4fourlgzftg
     """
 
-    IO.inspect Trebuchet.calibrate(values)
+    IO.inspect(Trebuchet.calibrate(values))
   end
 end
