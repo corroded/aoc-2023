@@ -8,7 +8,15 @@ defmodule Trebuchet do
     six: 6,
     seven: 7,
     eight: 8,
-    nine: 9
+    nine: 9,
+    oneight: 18,
+    twone: 21,
+    threeight: 38,
+    fiveeight: 58,
+    sevenine: 79,
+    eightwo: 82,
+    eighthree: 83,
+    nineight: 98
   }
   def calibrate(value) do
     number_words = Map.keys(@word_to_num_mapping) |> Enum.map(&(to_string(&1)))

@@ -1030,6 +1030,6 @@ defmodule TrebuchetTest do
       dhfbhone4fourlgzftg
     """
 
-    Trebuchet.calibrate(values)
+    IO.inspect Trebuchet.calibrate(values)
   end
 end
