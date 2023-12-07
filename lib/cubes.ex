@@ -17,6 +17,13 @@ defmodule Cubes do
     |> Enum.sum()
   end
 
+  def get_total_power(games) do
+    String.split(games, "\n", trim: true)
+    |> Enum.map(fn game -> get_least_common_cubes(game) end)
+    |> Enum.map(fn lcc -> get_cube_power(lcc) end)
+    |> Enum.sum
+  end
+
   def get_least_common_cubes(games) do
     game = String.split(games, ";")
       |> Enum.map(fn game ->
